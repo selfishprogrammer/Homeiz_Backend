@@ -16,8 +16,7 @@ $nums_of_records = mysqli_num_rows($account_status);
 if ($nums_of_record > 0) {
     $msg = array('data' => 'Email Already Exists', 'status' => 'false');
     echo json_encode($msg);
-}
-if ($nums_of_records > 0) {
+} else if ($nums_of_records > 0) {
     $update_data = mysqli_query($conn, "update `users` set `name`='$name', `email`='$email',`phone`='$phone',`password`='$password',`otpValue`='', `emailVerified`='[ ]' , `account_status`='' , `categories`='$categories' where `email`='$email'");
     if ($update_data) {
         $msg = array('data' => 'Successfully Registered !', 'status' => 'true');
